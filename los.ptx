@@ -1,0 +1,191 @@
+	.version 1.1
+	.target compute_10, map_f64_to_f32
+	//  compiled with /usr/local/cuda/open64/lib//be
+
+	.reg .u32 %ra1,%ra2,%ra3,%ra4,%ra5,%ra6,%ra7,%ra8,%ra9,
+		 %ra10,%ra11,%ra12,%ra13,%ra14,%ra15,%ra16;
+	.reg .u64 %rda1,%rda2,%rda3,%rda4,%rda5,%rda6,%rda7,%rda8,%rda9,
+		 %rda10,%rda11,%rda12,%rda13,%rda14,%rda15,%rda16;
+	.reg .f32 %fa1,%fa2,%fa3,%fa4,%fa5,%fa6,%fa7,%fa8,%fa9,
+		 %fa10,%fa11,%fa12,%fa13,%fa14,%fa15,%fa16;
+	.reg .f64 %fda1,%fda2,%fda3,%fda4,%fda5,%fda6,%fda7,%fda8,%fda9,
+		 %fda10,%fda11,%fda12,%fda13,%fda14,%fda15,%fda16;
+	.reg .u32 %rv1,%rv2,%rv3,%rv4;
+	.reg .u64 %rdv1,%rdv2,%rdv3,%rdv4;
+	.reg .f32 %fv1,%fv2,%fv3,%fv4;
+	.reg .f64 %fdv1,%fdv2,%fdv3,%fdv4;
+
+
+	//-----------------------------------------------------------
+	// Compiling /tmp/tmpxft_000045e2_00000000-5.i (/tmp/ccI#.SYmKsn)
+	//-----------------------------------------------------------
+
+	//-----------------------------------------------------------
+	// Options:
+	//-----------------------------------------------------------
+	//  Target:ptx, ISA:compute_10, Endian:little, Pointer Size:32
+	//  -O3	(Optimization level)
+	//  -g0	(Debug level)
+	//  -m2	(Report advisories)
+	//-----------------------------------------------------------
+
+	.file	1	"/tmp/tmpxft_000045e2_00000000-4.gpu"
+	.file	2	"/usr/lib/gcc/i386-redhat-linux/4.1.2/include/stddef.h"
+	.file	3	"/usr/local/cuda/bin/../include/crt/device_runtime.h"
+	.file	4	"/usr/local/cuda/bin/../include/crt/../host_defines.h"
+	.file	5	"/usr/local/cuda/bin/../include/crt/storage_class.h"
+	.file	6	"/usr/local/cuda/bin/../include/crt/../builtin_types.h"
+	.file	7	"/usr/local/cuda/bin/../include/crt/../device_types.h"
+	.file	8	"/usr/local/cuda/bin/../include/crt/../driver_types.h"
+	.file	9	"/usr/local/cuda/bin/../include/crt/../texture_types.h"
+	.file	10	"/usr/local/cuda/bin/../include/crt/../vector_types.h"
+	.file	11	"/usr/local/cuda/bin/../include/crt/../device_launch_parameters.h"
+	.file	12	"los.cu"
+	.file	13	"/usr/local/cuda/bin/../include/common_functions.h"
+	.file	14	"/usr/local/cuda/bin/../include/crt/func_macro.h"
+	.file	15	"/usr/local/cuda/bin/../include/math_functions.h"
+	.file	16	"/usr/local/cuda/bin/../include/device_functions.h"
+	.file	17	"/usr/local/cuda/bin/../include/math_constants.h"
+	.file	18	"/usr/local/cuda/bin/../include/sm_11_atomic_functions.h"
+	.file	19	"/usr/local/cuda/bin/../include/texture_fetch_functions.h"
+	.file	20	"/usr/local/cuda/bin/../include/math_functions_dbl_ptx1.h"
+
+
+	.entry _Z19_losPointRectDEVICEPhPfjjj
+	{
+	.reg .u16 $rh1,$rh2,$rh3;
+	.reg .u32 $r1,$r2,$r3,$r4,$r5,$r6,$r7,$r8,$r9,
+		$r10,$r11,$r12,$r13,$r14,$r15,$r16,$r17,$r18,$r19,
+		$r20,$r21,$r22,$r23,$r24,$r25,$r26,$r27,$r28,$r29,
+		$r30,$r31,$r32,$r33,$r34,$r35,$r36,$r37,$r38,$r39,
+		$r40,$r41,$r42;
+	.reg .f32 $f1,$f2,$f3,$f4,$f5,$f6,$f7,$f8,$f9,
+		$f10,$f11,$f12,$f13,$f14,$f15,$f16,$f17,$f18,$f19,
+		$f20,$f21,$f22,$f23,$f24,$f25,$f26,$f27,$f28,$f29,
+		$f30,$f31,$f32,$f33,$f34,$f35,$f36,$f37,$f38,$f39,
+		$f40,$f41,$f42,$f43,$f44,$f45,$f46,$f47;
+	.reg .pred $p0,$p1,$p2,$p3;
+	.param .u32 __cudaparm__Z19_losPointRectDEVICEPhPfjjj_los;
+	.param .u32 __cudaparm__Z19_losPointRectDEVICEPhPfjjj_hmap;
+	.param .u32 __cudaparm__Z19_losPointRectDEVICEPhPfjjj_w;
+	.param .u32 __cudaparm__Z19_losPointRectDEVICEPhPfjjj_h;
+	.param .u32 __cudaparm__Z19_losPointRectDEVICEPhPfjjj_pt;
+	.loc	12	44	0
+$LBB1__Z19_losPointRectDEVICEPhPfjjj:
+	.loc	12	58	0
+	ld.param.u32 	$r1, [__cudaparm__Z19_losPointRectDEVICEPhPfjjj_pt];	//  id:158 __cudaparm__Z19_losPointRectDEVICEPhPfjjj_pt+0x0
+	mul.lo.u32 	$r2, $r1, 4;      	//  
+	ld.param.u32 	$r3, [__cudaparm__Z19_losPointRectDEVICEPhPfjjj_hmap];	//  id:159 __cudaparm__Z19_losPointRectDEVICEPhPfjjj_hmap+0x0
+	add.u32 	$r4, $r2, $r3;       	//  
+	ld.global.f32 	$f1, [$r4+0];  	//  id:160
+	.loc	12	63	0
+	mov.u16 	$rh1, %ctaid.x;      	//  
+	mul.wide.u16 	$r5, $rh1, 16;  	//  
+	mov.u16 	$rh2, %ctaid.y;      	//  
+	mul.wide.u16 	$r6, $rh2, 16;  	//  
+	cvt.u32.u16 	$r7, %tid.x;     	//  
+	add.u32 	$r8, $r7, $r5;       	//  
+	cvt.u32.u16 	$r9, %tid.y;     	//  
+	add.u32 	$r10, $r9, $r6;      	//  
+	ld.param.u32 	$r11, [__cudaparm__Z19_losPointRectDEVICEPhPfjjj_w];	//  id:165 __cudaparm__Z19_losPointRectDEVICEPhPfjjj_w+0x0
+	mul.lo.u32 	$r12, $r10, $r11; 	//  
+	add.u32 	$r13, $r8, $r12;     	//  
+	mul.lo.u32 	$r14, $r13, 4;    	//  
+	add.u32 	$r15, $r14, $r3;     	//  
+	ld.global.f32 	$f2, [$r15+0]; 	//  id:166
+	.loc	12	67	0
+	rem.u32 	$r16, $r1, $r11;     	//  
+	div.u32 	$r17, $r1, $r11;     	//  
+	sub.f32 	$f3, $f2, $f1;       	//  
+	cvt.rn.f32.u32 	$f4, $r16;    	//  
+	cvt.rn.f32.u32 	$f5, $r17;    	//  
+	mul.f32 	$f6, $f3, $f3;       	//  
+	cvt.rn.f32.u32 	$f7, $r8;     	//  
+	cvt.rn.f32.u32 	$f8, $r10;    	//  
+	sub.f32 	$f9, $f7, $f4;       	//  
+	sub.f32 	$f10, $f8, $f5;      	//  
+	mul.f32 	$f11, $f9, $f9;      	//  
+	mul.f32 	$f12, $f10, $f10;    	//  
+	add.f32 	$f13, $f11, $f12;    	//  
+	add.f32 	$f14, $f6, $f13;     	//  
+	rsqrt.f32 	$f15, $f14;        	//  
+	mov.f32 	$f16, $f15;          	//  
+	mov.f32 	$f17, 0f3f800000;    	//  1
+	setp.lt.f32 	$p1, $f15, $f17; 	//  
+	@!$p1 bra 	$Lt_0_9;           	//  
+	sub.u32 	$r18, $r11, 1;       	//  
+	ld.param.u32 	$r19, [__cudaparm__Z19_losPointRectDEVICEPhPfjjj_h];	//  id:167 __cudaparm__Z19_losPointRectDEVICEPhPfjjj_h+0x0
+	sub.u32 	$r20, $r19, 1;       	//  
+$Lt_0_11:
+ //<loop> Loop body line 75
+	.loc	12	75	0
+	mov.f32 	$f18, 0f3f800000;    	//  1
+	sub.f32 	$f19, $f18, $f16;    	//  
+	mul.f32 	$f20, $f19, $f4;     	//  
+	mul.f32 	$f21, $f19, $f5;     	//  
+	mul.f32 	$f22, $f7, $f16;     	//  
+	mul.f32 	$f23, $f8, $f16;     	//  
+	add.f32 	$f24, $f20, $f22;    	//  
+	add.f32 	$f25, $f21, $f23;    	//  
+	cvt.rmi.f32.f32 	$f26, $f24;  	//  
+	cvt.rmi.f32.f32 	$f27, $f25;  	//  
+	cvt.rzi.u32.f32 	$r21, $f26;  	//  
+	cvt.rzi.u32.f32 	$r22, $f27;  	//  
+	mul.lo.u32 	$r23, $r22, $r11; 	//  
+	add.u32 	$r24, $r21, $r23;    	//  
+	mul.lo.u32 	$r25, $r24, 4;    	//  
+	add.u32 	$r26, $r3, $r25;     	//  
+	ld.global.f32 	$f28, [$r26+0];	//  id:168
+	add.u32 	$r27, $r21, 1;       	//  
+	min.u32 	$r28, $r18, $r27;    	//  
+	add.u32 	$r29, $r23, $r28;    	//  
+	mul.lo.u32 	$r30, $r29, 4;    	//  
+	add.u32 	$r31, $r3, $r30;     	//  
+	ld.global.f32 	$f29, [$r31+0];	//  id:169
+	add.u32 	$r32, $r22, 1;       	//  
+	min.u32 	$r33, $r20, $r32;    	//  
+	mul.lo.u32 	$r34, $r33, $r11; 	//  
+	add.u32 	$r35, $r21, $r34;    	//  
+	mul.lo.u32 	$r36, $r35, 4;    	//  
+	add.u32 	$r37, $r3, $r36;     	//  
+	ld.global.f32 	$f30, [$r37+0];	//  id:170
+	add.u32 	$r38, $r28, $r34;    	//  
+	mul.lo.u32 	$r39, $r38, 4;    	//  
+	add.u32 	$r40, $r3, $r39;     	//  
+	ld.global.f32 	$f31, [$r40+0];	//  id:171
+	sub.f32 	$f32, $f29, $f28;    	//  
+	cvt.rn.f32.u32 	$f33, $r21;   	//  
+	sub.f32 	$f34, $f24, $f33;    	//  
+	mul.f32 	$f35, $f32, $f34;    	//  
+	add.f32 	$f36, $f35, $f28;    	//  
+	sub.f32 	$f37, $f31, $f30;    	//  
+	mad.f32 	$f38, $f37, $f34, $f30;	//  
+	sub.f32 	$f39, $f38, $f36;    	//  
+	cvt.rn.f32.u32 	$f40, $r22;   	//  
+	sub.f32 	$f41, $f25, $f40;    	//  
+	mad.f32 	$f42, $f39, $f41, $f36;	//  
+	mul.f32 	$f43, $f2, $f16;     	//  
+	mad.f32 	$f44, $f19, $f1, $f43;	//  
+	sub.f32 	$f45, $f42, $f44;    	//  
+	mov.f32 	$f46, 0f3f800000;    	//  1
+	setp.gt.f32 	$p2, $f45, $f46; 	//  
+	@!$p2 bra 	$Lt_0_13;          	//  
+	.loc	12	78	0
+	mov.u16 	$rh3, 64;            	//  
+	ld.param.u32 	$r41, [__cudaparm__Z19_losPointRectDEVICEPhPfjjj_los];	//  id:172 __cudaparm__Z19_losPointRectDEVICEPhPfjjj_los+0x0
+	add.u32 	$r42, $r41, $r13;    	//  
+	st.global.u8 	[$r42+0], $rh3; 	//  id:173
+	.loc	12	79	0
+	bra.uni 	$Lt_0_1;             	//  
+$Lt_0_13:
+ //<loop> Part of loop body line 75, head labeled $Lt_0_11
+	.loc	12	81	0
+	add.f32 	$f16, $f15, $f16;    	//  
+	mov.f32 	$f47, 0f3f800000;    	//  1
+	setp.lt.f32 	$p3, $f16, $f47; 	//  
+	@$p3 bra 	$Lt_0_11;           	//  
+$Lt_0_9:
+$Lt_0_1:
+	.loc	12	82	0
+	exit;                         	//  
+	} // _Z19_losPointRectDEVICEPhPfjjj

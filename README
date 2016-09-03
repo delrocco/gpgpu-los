@@ -1,0 +1,36 @@
+----------------------------------------
+GPGPU-LOS
+----------------------------------------
+
+A project that batched line-of-sight (LOS) checks with nVidia CUDA, circa April 2008.
+
+----------------------------------------
+ABOUT
+----------------------------------------
+
+At first I intended to precompute LOS checks from of every point on a heightmap to every
+other point, but the space requirements for standard heightmaps were impractical. So I
+changed the focus to compute an LOS check from a single point to every other point on the
+map.
+
+The algorithm was first tested/debugged on a CPU, then with CUDA in a command line program,
+then visualized with a viewer. The viewer showed the view-shed of all polygons visable
+from the starting LOS point.
+
+The project demonstrated that it was very feasible, and recommended even, to parrallelize
+LOS checks on a GPU at runtime when needed, or at the very least given static terrain, to
+precompute these checks for ever faster visualization later.
+
+----------------------------------------
+NOTES
+----------------------------------------
+
+nVidia CUDA API was very new at the time (v1.0)
+Hardware used was a G80 GPU, GeForce 8800 GTX.
+
+The original programs were compiled and run in Microsoft Visual Studio (C++) from 2008.
+
+DirectX 9.0c was used for rendering in the viewer.
+
+** It is very likely that significant conversion will be needed to build this with the
+most recent Visual Studio IDEs.
